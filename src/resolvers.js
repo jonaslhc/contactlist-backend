@@ -72,7 +72,6 @@ module.exports = resolvers = {
     modifyContact: (root, args) => {
       let idx = -1;
       contacts.forEach((el) => {
-        console.log({ el });
         if (el.contactId == args.contactId) {
           idx = args.contactId;
         }
