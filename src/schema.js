@@ -16,8 +16,10 @@ type Query {
    Contact: [Contact]
 }
 type Mutation {
-  # A mutation to add a new channel to the list of channels
-  addContact(name: String!): Contact
+  addContact(firstName: String!, lastName: String!,
+  phone: String!, address: String, email: String): Contact
+  modifyContact(contactId: String!, firstName: String, lastName: String,
+  phone: String, address: String, email: String): Contact
 }
 `;
 
