@@ -70,23 +70,26 @@ module.exports = resolvers = {
       return newContact;
     },
     modifyContact: (root, args) => {
-      const idx = 0;
-      contacts.forEach((el, index) => {
-        if (el.contactId === args.id) {
-          idx = index;
+      let idx = -1;
+      contacts.forEach((el) => {
+        console.log({ el });
+        if (el.contactId == args.contactId) {
+          idx = args.contactId;
         }
       });
 
-      contact = {
-        contactId: args.contactId,
-        firstname: args.firstName,
-        lastname: args.lastName,
-        phone: args.phone,
-        address: args.address,
-        email: args.email,
+      let contact = {};
+      if (idx !== -1) {
+        contact = {
+          contactId: args.contactId,
+          firstname: args.firstName,
+          lastname: args.lastName,
+          phone: args.phone,
+          address: args.address,
+          email: args.email
+        };
+        contacts[idx - 1] = contact;
       }
-
-      contacts[idx] = contact;
 
       return contact;
     },
